@@ -1,0 +1,1 @@
+from pydantic import BaseModel, Fieldfrom typing import Optionalclass User(BaseModel):    username: str = Field(..., example="ivan")    email: str = Field(..., example="ivan@mail.com")    bio: Optional[str] = Field("", example="hello world")
