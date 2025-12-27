@@ -33,4 +33,5 @@
 cd infrastructure
 
 docker-compose up -d
+ uvicorn app.main:app --reload
 
