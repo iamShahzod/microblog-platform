@@ -1,14 +1,20 @@
 from pydantic import BaseModel, Field
-from typing import List, Optional
+from typing import List
 from datetime import datetime
 
-class Post(BaseModel):
-    id: Optional[str] = Field(None, alias="_id")
+class PostBase(BaseModel):
+    text: str = Field(..., min_length=1, max_length=1000)
+    tags: List[str] = Field(default_factory=list)
+
+class PostCreate(PostBase):
     user_id: str
-    text: str
-    tags: List[str] = []
+
+class PostResponse(PostBase):
+    id: str = Field(..., alias="_id")
+    user_id: str
     likes: List[str] = []
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    likes_count: int = 0
+    created_at: datetime
     
     class Config:
         allow_population_by_field_name = True
