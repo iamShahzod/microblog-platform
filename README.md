@@ -30,9 +30,11 @@
 ### 1. Запуск инфраструктуры
 
 ```bash
+Инструкция по запуску:
 
-cd infrastructure
-
-docker-compose up -d
- uvicorn app.main:app --reload
+1. cd microblog-platform/infrastructure
+2. docker-compose up -d
+3. cd ../backend
+4. pip install -r requirements.txt
+5. python run.py
 
